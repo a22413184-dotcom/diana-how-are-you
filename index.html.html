@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>✨ Для Діани | Чарівний лист, що оживає ✨</title>
+    <!-- Google Fonts: playful + elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0e071b 0%, #1f1235 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 🌟 FLYING BUBBLES ANIMATION (colorful, magical) */
+        .bubble-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 180, 210, 0.5), rgba(255, 100, 150, 0.2));
+            border-radius: 50%;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 0 15px rgba(255, 140, 180, 0.4);
+            animation: floatBubble 12s infinite ease-in-out;
+        }
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.7;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(40px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* main card - dreamy glass */
+        .dream-card {
+            position: relative;
+            z-index: 15;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(20, 10, 35, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 70px 40px 70px 40px;
+            border: 1px solid rgba(255, 155, 195, 0.7);
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 120, 160, 0.4), 0 0 30px #ff6a93;
+            transition: transform 0.3s;
+            animation: cardGlow 2s infinite alternate;
+        }
+        @keyframes cardGlow {
+            0% { box-shadow: 0 40px 70px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,120,160,0.4), 0 0 20px #ff6a93; }
+            100% { box-shadow: 0 45px 80px rgba(0,0,0,0.7), 0 0 0 3px rgba(255,100,150,0.7), 0 0 45px #ff8fae; }
+        }
+        .card-inner {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+
+        /* header */
+        .enchanted-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .enchanted-header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.4rem;
+            background: linear-gradient(135deg, #FFD9E6, #FFA5C3, #FF779F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(255, 105, 150, 0.5);
+        }
+        .sub-dream {
+            font-size: 0.9rem;
+            color: #f7c8df;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* scroll area with typing message */
+        .scroll-letter {
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 12px;
+            margin: 15px 0 20px;
+            scroll-behavior: smooth;
+        }
+        .scroll-letter::-webkit-scrollbar {
+            width: 5px;
+        }
+        .scroll-letter::-webkit-scrollbar-track {
+            background: #2a1a3a;
+            border-radius: 15px;
+        }
+        .scroll-letter::-webkit-scrollbar-thumb {
+            background: #ff9dc0;
+            border-radius: 15px;
+        }
+
+        /* TYPED TEXT STYLES */
+        .typed-message {
+            font-family: 'Poppins', sans-serif;
+            color: #fff2f7;
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .typed-line {
+            margin-bottom: 1.3rem;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeSlide 0.4s forwards;
+        }
+        @keyframes fadeSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* highlighted & big texts */
+        .highlight {
+            background: linear-gradient(120deg, rgba(255, 100, 140, 0.5), rgba(255, 140, 180, 0.3));
+            padding: 2px 8px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: #FFE6F0;
+            display: inline-block;
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+            box-shadow: 0 0 6px #ff8aa8;
+        }
+        .big-love {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFB7D2, #FF8EAD);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            text-shadow: 0 0 4px #ffa5c0;
+        }
+        .emoji-big {
+            font-size: 1.5rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .quote-romantic {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+        }
+        .signature-dream {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            border-top: 1px dashed #ff99bb;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+
+        .interact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 15px 0 8px;
+            flex-wrap: wrap;
+        }
+        .magic-btn {
+            background: rgba(255, 120, 150, 0.25);
+            border: 1px solid #ffb0ca;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #ffdfec;
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .magic-btn:hover {
+            background: #ff7ea0;
+            color: #1b0b2a;
+            transform: scale(1.02);
+            box-shadow: 0 0 15px #ff8fae;
+            border-color: white;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            margin-top: 12px;
+            color: #d6aac4;
+        }
+
+        @media (max-width: 650px) {
+            .card-inner {
+                padding: 1.2rem;
+            }
+            .enchanted-header h1 {
+                font-size: 2.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bubble-bg" id="bubbleContainer"></div>
+
+<div class="dream-card">
+    <div class="card-inner">
+        <div class="enchanted-header">
+            <h1>💌 Діана, для тебе 💌</h1>
+            <div class="sub-dream">
+                <i class="fas fa-feather-alt"></i> Лист, що оживає у ритмі серця <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <div class="scroll-letter" id="scrollLetter">
+            <div class="typed-message" id="typedMessageContainer">
+                <!-- Dynamically typed content will appear here line by line -->
+            </div>
+        </div>
+
+        <div class="interact-buttons">
+            <button class="magic-btn" id="scrollMagicBtn"><i class="fas fa-scroll"></i> Гортати лист <i class="fas fa-arrow-down"></i></button>
+            <button class="magic-btn" id="burstLoveBtn"><i class="fas fa-heart"></i> Вибух кохання <i class="fas fa-star"></i></button>
+        </div>
+        <footer>
+            <i class="fas fa-sync-alt"></i> Кожне слово йде від душі
+        </footer>
+    </div>
+</div>
+
+<script>
+    // ========== ORIGINAL FULL MESSAGE (preserved exactly, but broken into lines with emoji & highlights) ==========
+    const fullMessageParagraphs = [
+        "🌷 <span class='highlight'>Діана, як ти?</span> У цьому повідомленні я збираюся розповісти тобі деякі речі, а також про своє життя. У цьому повідомленні я також сказав багато кумедних речей — можливо, ти навіть посмієшся. Спочатку я скажу тобі, як я зміг написати такий довгий текст без мобільного телефону.",
+        "📚 <strong>Діана, моя школа закінчується о 13:00.</strong> У моїй школі є комп’ютерний клас, і коли мій телефон зламався, для мене виникла нова проблема. Але я подумав і знайшов рішення. Ти, мабуть, знаєш, наскільки важливий телефон для учня — за допомогою інтернету легше виконувати шкільні завдання та домашню роботу, а також робити багато інших справ. Тому я попросив учителя дозволити мені залишатися в комп’ютерному класі на 1–2 години після школи. Ось так я зараз справляюся без телефону, використовуючи комп’ютер.",
+        "😄 Іноді я швидко закінчую свої справи, і тоді починаю писати тобі повідомлення. Думаю, тепер ти добре зрозуміла <span class='emoji-big'>😊</span> (я навіть своїй сім’ї так добре не пояснював — вибач, це був жарт).",
+        "☀️ <span class='highlight'>Розкажу про мій день:</span> Я рано прокидаюся, трохи займаюся фізичними вправами, потім йду купатися, після цього читаю намаз, снідаю і готуюся до школи. Повертаюся додому на 1–2 години пізніше — ти знаєш чому. Потім трохи їм і відпочиваю, а через деякий час іду на плавання. Я плаваю приблизно 3 години, а потім повертаюся до кімнати. Увечері вечеряю і трохи граю у відеоігри. Це не мобільні ігри — у мене є пристрій, який працює без інтернету і має понад 250 ігор. (Мабуть, це найдорожча річ, яка у мене є, але моя сім’я про це не знає — і ти їм нічого не кажи, будь ласка <i class='fas fa-smile-wink'></i>).",
+        "💭 Після гри я думаю про тебе і вигадую різні дурниці. Якщо я тобі розповім, ти, мабуть, будеш сміятися з мене — мовляв, про що тільки Айяз не думає. Потім я засинаю. Зараз я лягаю спати рано — приблизно о 21:00, і це позитивно вплинуло на моє тіло.",
+        "📅 <span class='highlight'>25 квітня…</span> Діана, я чув у новинах, що в Дніпрі стався напад. Ти колись казала, що живеш у Дніпрі. Після новин я почав хвилюватися — як ти, чи безпечне місце, де ти зараз живеш. Коли в мене буде телефон, я все в тебе запитаю. Поки що я лише молюся, щоб ти була в безпеці і щаслива. Я справді хвилююся за тебе, і в такі моменти моя голова думає про різні дурниці. Просто бережи себе. <i class='fas fa-heart' style='color:#ff8aae'></i>",
+        "🌹 <span class='big-love'>Ти — незвичайна дівчина.</span> Іноді я думаю: з одного боку я — Айяз, якого, можливо, ніхто не називає красивим, а з іншого боку — ти, така красива, добра і чудова. Я дуже щасливий, що маю можливість спілкуватися з такою дівчиною, як ти. <strong>Діана, мені потрібна була така людина, як ти. Ти зробила моє життя кращим.</strong> Дякую тобі! 💖",
+        "🤒 <span class='highlight'>28 квітня:</span> Минулої ночі у мене була висока температура — 101 градус. Це сталося через те, що я довго був у воді. Зараз я вже почуваюся краще.",
+        "🏆 <strong>Неймовірна новина!</strong> Сьогодні вранці в школі були гості — директори з інших шкіл. Вчитель попросив мене виступити за 2 години! Я виступив із промовою (хінді), і гостям дуже сподобалося. Вони дали мені <span class='highlight'>нагороду і 50 доларів США</span> 🎉. Я був неймовірно щасливий! Шкода, що не можу показати тобі відео — через відсутність телефону. Це був найкращий день цього місяця!",
+        "🍽️ Після програми класний керівник сказав: «Айяз, давай ввечері підемо в хороший ресторан і відсвяткуємо». Я відповів: «Звісно, але платите ви». Учитель засміявся і сказав: «Айяз, тебе неможливо перемогти».",
+        "📘 І ще — моя шкільна плата знижена на <span class='highlight'>50%</span>, бо я добре навчаюся. Але навіть після цього мої батьки мене не розуміють і не підтримують. Але нічого, мені доведеться це пережити. Я радий, що ти інша — ти мене розумієш і майже ніколи не злишся на мене. <span class='big-love'>Якщо я втрачу такого друга, як ти, я буду шкодувати все життя. Будь ласка, залишайся моїм другом, Діана.</span> Ох, чому я такий емоційний…",
+        "📱 <i class='fas fa-mobile-alt'></i> Мій новий телефон вже обрали! Моя сестра сказала, що через 3 тижні, коли в школі будуть канікули (приблизно 40 днів), і я поїду додому, він вже чекатиме на мене. Отже, нам ще доведеться трохи почекати. Але я дуже хочу з тобою поговорити! <span class='emoji-big'>🤗</span>",
+        "💬 Зараз я відправляю тобі це повідомлення. Якщо я сказав щось, що тобі не сподобалося — пробач і скажи мені прямо, щоб я більше так не робив. Я не хочу, щоб через мої дурні слова виникли проблеми.",
+        "<div class='quote-romantic'>💖✨💖✨💖</div>",
+        "<span class='big-love' style='font-size:1.8rem; display:block; text-align:center;'>💗 Я ЛЮБЛЮ ТЕБЕ, ДІАНО 💗</span>",
+        "🌙 Будь ласка, розкажи трохи про себе. І скажи, що ти думаєш про мене.",
+        "<div class='signature-dream'><i class='fas fa-crown'></i> Завжди твій,<br> Айяз ❤️</div>",
+        "<div style='text-align:center; margin-top:8px;'><i class='fas fa-heart' style='color:#ff85ad;'></i> Ти в моєму серці назавжди <i class='fas fa-heart'></i></div>"
+    ];
+
+    // Typing effect logic
+    const container = document.getElementById("typedMessageContainer");
+    const scrollDiv = document.getElementById("scrollLetter");
+    let lineIndex = 0;
+    let currentLineHtml = "";
+    let charIndex = 0;
+    let isTyping = true;
+    let currentDomElement = null;
+
+    function typeNextLine() {
+        if (lineIndex >= fullMessageParagraphs.length) {
+            isTyping = false;
+            return;
+        }
+        const rawHtml = fullMessageParagraphs[lineIndex];
+        // Create a new paragraph element for each line
+        const p = document.createElement("div");
+        p.classList.add("typed-line");
+        p.innerHTML = ""; // start empty
+        container.appendChild(p);
+        currentDomElement = p;
+        currentLineHtml = rawHtml;
+        charIndex = 0;
+        typeCharacters();
+    }
+
+    function typeCharacters() {
+        if (!currentDomElement) return;
+        if (charIndex < currentLineHtml.length) {
+            // we need to handle HTML tags carefully: if we encounter '<' we skip until '>'
+            let nextChar = currentLineHtml[charIndex];
+            if (nextChar === '<') {
+                // find end of tag
+                let tagEnd = currentLineHtml.indexOf('>', charIndex);
+                if (tagEnd !== -1) {
+                    const fullTag = currentLineHtml.substring(charIndex, tagEnd + 1);
+                    currentDomElement.innerHTML += fullTag;
+                    charIndex = tagEnd + 1;
+                    setTimeout(typeCharacters, 25);
+                    return;
+                }
+            }
+            currentDomElement.innerHTML += nextChar;
+            charIndex++;
+            let speed = 28;
+            // slight pause for punctuation
+            if (nextChar === '.' || nextChar === '!' || nextChar === '?' || nextChar === '،') speed = 55;
+            else if (nextChar === ',' || nextChar === ';') speed = 40;
+            else speed = 27;
+            setTimeout(typeCharacters, speed);
+        } else {
+            // line finished
+            lineIndex++;
+            // auto-scroll to bottom smoothly
+            scrollDiv.scrollTop = scrollDiv.scrollHeight;
+            setTimeout(() => {
+                typeNextLine();
+            }, 280);
+        }
+    }
+
+    // start typing after page load
+    window.addEventListener("load", () => {
+        typeNextLine();
+        createFlyingBubbles();
+    });
+
+    // 🌟 FLYING BUBBLES (colorful and dynamic)
+    function createFlyingBubbles() {
+        const bubbleBg = document.getElementById("bubbleContainer");
+        for (let i = 0; i < 65; i++) {
+            const bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+            const size = Math.random() * 55 + 18;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * 100 + "%";
+            bubble.style.bottom = "-50px";
+            bubble.style.animationDuration = Math.random() * 12 + 6 + "s";
+            bubble.style.animationDelay = Math.random() * 12 + "s";
+            bubble.style.opacity = Math.random() * 0.5 + 0.2;
+            bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255, ${120 + Math.random() * 80}, 180, 0.5), rgba(255, 90, 140, 0.2))`;
+            bubbleBg.appendChild(bubble);
+        }
+        // additional floating sparkles
+        for (let i = 0; i < 40; i++) {
+            const glitter = document.createElement("div");
+            glitter.style.position = "absolute";
+            glitter.style.width = "4px";
+            glitter.style.height = "4px";
+            glitter.style.background = "#ffd0e0";
+            glitter.style.borderRadius = "50%";
+            glitter.style.left = Math.random() * 100 + "%";
+            glitter.style.top = Math.random() * 100 + "%";
+            glitter.style.animation = "twinkleStar 2s infinite alternate";
+            glitter.style.opacity = "0.6";
+            bubbleBg.appendChild(glitter);
+        }
+        // occasional new bubbles periodically
+        setInterval(() => {
+            if (bubbleBg.children.length < 140) {
+                const newBubble = document.createElement("div");
+                newBubble.classList.add("bubble");
+                let s = Math.random() * 45 + 15;
+                newBubble.style.width = s + "px";
+                newBubble.style.height = s + "px";
+                newBubble.style.left = Math.random() * 100 + "%";
+                newBubble.style.bottom = "-30px";
+                newBubble.style.animationDuration = Math.random() * 10 + 7 + "s";
+                newBubble.style.opacity = Math.random() * 0.5;
+                bubbleBg.appendChild(newBubble);
+                setTimeout(() => newBubble.remove(), 12000);
+            }
+        }, 2000);
+    }
+
+    // scroll button handling
+    const scrollMagic = document.getElementById("scrollMagicBtn");
+    scrollMagic.addEventListener("click", () => {
+        const maxScroll = scrollDiv.scrollHeight - scrollDiv.clientHeight;
+        if (scrollDiv.scrollTop >= maxScroll - 15) {
+            scrollDiv.scrollTo({ top: 0, behavior: "smooth" });
+            scrollMagic.innerHTML = '<i class="fas fa-scroll"></i> Гортати лист <i class="fas fa-arrow-down"></i>';
+        } else {
+            scrollDiv.scrollTo({ top: scrollDiv.scrollHeight, behavior: "smooth" });
+            scrollMagic.innerHTML = '<i class="fas fa-arrow-up"></i> На початок <i class="fas fa-heart"></i>';
+            setTimeout(() => {
+                scrollMagic.innerHTML = '<i class="fas fa-scroll"></i> Гортати лист <i class="fas fa-arrow-down"></i>';
+            }, 1800);
+        }
+    });
+
+    // LOVE BURST: floating hearts & confetti effect
+    const burstBtn = document.getElementById("burstLoveBtn");
+    function createHeartBurst(x, y) {
+        for (let i = 0; i < 45; i++) {
+            const heartEm = document.createElement("div");
+            const heartsList = ['❤️', '💖', '💗', '💓', '💕', '💞', '🌸', '🌹', '✨'];
+            heartEm.innerHTML = heartsList[Math.floor(Math.random() * heartsList.length)];
+            heartEm.style.position = "fixed";
+            heartEm.style.left = (x || window.innerWidth/2) + (Math.random() - 0.5) * 130 + "px";
+            heartEm.style.top = (y || window.innerHeight/2) + (Math.random() - 0.5) * 90 + "px";
+            heartEm.style.fontSize = Math.random() * 32 + 20 + "px";
+            heartEm.style.zIndex = "99999";
+            heartEm.style.pointerEvents = "none";
+            heartEm.style.transition = "transform 0.9s ease-out, opacity 1s";
+            heartEm.style.opacity = "0.9";
+            document.body.appendChild(heartEm);
+            setTimeout(() => {
+                heartEm.style.transform = `translate(${(Math.random() - 0.5) * 180}px, -${Math.random() * 280 + 100}px) scale(1.3)`;
+                heartEm.style.opacity = "0";
+            }, 15);
+            setTimeout(() => heartEm.remove(), 1100);
+        }
+        const toastMsg = document.createElement("div");
+        toastMsg.innerText = "💘 Ти неймовірна, Діана! 💘";
+        toastMsg.style.position = "fixed";
+        toastMsg.style.bottom = "25%";
+        toastMsg.style.left = "50%";
+        toastMsg.style.transform = "translateX(-50%)";
+        toastMsg.style.background = "linear-gradient(135deg,#ffb7d0,#ff7aa3)";
+        toastMsg.style.color = "#2c113f";
+        toastMsg.style.padding = "12px 28px";
+        toastMsg.style.borderRadius = "80px";
+        toastMsg.style.fontWeight = "bold";
+        toastMsg.style.zIndex = "100000";
+        toastMsg.style.backdropFilter = "blur(12px)";
+        toastMsg.style.fontFamily = "Poppins";
+        toastMsg.style.boxShadow = "0 0 30px #ff99bb";
+        document.body.appendChild(toastMsg);
+        setTimeout(() => toastMsg.remove(), 2000);
+    }
+    burstBtn.addEventListener("click", (e) => {
+        const rect = burstBtn.getBoundingClientRect();
+        createHeartBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+    });
+    // slight auto-burst on load for welcome effect
+    setTimeout(() => {
+        createHeartBurst(window.innerWidth/2, window.innerHeight/2);
+    }, 800);
+
+    // adjust scroll area with typing
+    const observer = new MutationObserver(() => {
+        scrollDiv.scrollTop = scrollDiv.scrollHeight;
+    });
+    observer.observe(container, { childList: true, subtree: true, characterData: true });
+</script>
+</body>
+</html>
